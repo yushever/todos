@@ -1,8 +1,22 @@
 import "./task.css";
 import { formatDistanceToNow } from "date-fns";
 import React from "react";
+import PropTypes from "prop-types";
 
 class Task extends React.Component {
+  static defaultProps = {
+    onDeleted: () => {},
+    onToggleDone: () => {},
+  };
+
+  static propTypes = {
+    label: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+    createTime: PropTypes.number.isRequired,
+    onDeleted: PropTypes.func,
+    onToggleDone: PropTypes.func,
+  };
+
   render() {
     const { label, onDeleted, onToggleDone, completed, createTime } =
       this.props;
@@ -41,4 +55,5 @@ const createdTime = (time) => {
     includeSeconds: true,
   });
 };
+
 export default Task;

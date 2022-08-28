@@ -1,8 +1,21 @@
 import TasksFilter from "../tasks-filter";
 import "./footer.css";
 import React from "react";
+import PropTypes from "prop-types";
 
 class Footer extends React.Component {
+  static defaultProps = {
+    toDo: 0,
+    onSelected: () => {},
+    deleteCompletedItems: () => {},
+  };
+
+  static propTypes = {
+    toDo: PropTypes.number,
+    onSelected: PropTypes.func,
+    deleteCompletedItems: PropTypes.func,
+  };
+
   render() {
     const { toDo, filter, onSelected, deleteCompletedItems } = this.props;
 

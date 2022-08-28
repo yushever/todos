@@ -1,7 +1,17 @@
 import React from "react";
 import "./tasks-filter.css";
+import PropTypes from "prop-types";
 
 class TasksFilter extends React.Component {
+  static defaultProps = {
+    onSelected: () => {},
+  };
+
+  static propTypes = {
+    filter: PropTypes.string.isRequired,
+    onSelected: PropTypes.func,
+  };
+
   render() {
     const { onSelected, filter } = this.props;
     return (
