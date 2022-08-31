@@ -1,7 +1,7 @@
-import "./task.css";
-import { formatDistanceToNow } from "date-fns";
-import React from "react";
-import PropTypes from "prop-types";
+import './task.css';
+import { formatDistanceToNow } from 'date-fns';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 class Task extends React.Component {
   static defaultProps = {
@@ -18,30 +18,22 @@ class Task extends React.Component {
   };
 
   render() {
-    const { label, onDeleted, onToggleDone, completed, createTime } =
-      this.props;
+    const { label, onDeleted, onToggleDone, completed, createTime } = this.props;
 
-    let classNames = "todo-list";
+    let classNames = 'todo-list';
     if (completed) {
-      classNames += " completed";
+      classNames += ' completed';
     }
 
     return (
       <li className={classNames}>
         <div>
-          <input
-            className="toggle"
-            type="checkbox"
-            checked={completed}
-            onChange={onToggleDone}
-          ></input>
+          <input className="toggle" type="checkbox" checked={completed} onChange={onToggleDone}></input>
           <label>
             <span className="description" onClick={onToggleDone}>
               {label}
             </span>
-            <span className="created">
-              created {createdTime(createTime)} ago
-            </span>
+            <span className="created">created {createdTime(createTime)} ago</span>
           </label>
           <button className="icon icon-edit"></button>
           <button className="icon icon-destroy" onClick={onDeleted}></button>

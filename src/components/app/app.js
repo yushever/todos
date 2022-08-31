@@ -1,21 +1,22 @@
-import Header from "../header";
-import Footer from "../footer";
-import NewTaskForm from "../new-task-form";
-import TaskList from "../task-list";
-import React from "react";
+import React from 'react';
 
-import "./app.css";
+import Header from '../header';
+import Footer from '../footer';
+import NewTaskForm from '../new-task-form';
+import TaskList from '../task-list';
+
+import './app.css';
 
 class App extends React.Component {
   maxId = 100;
 
   state = {
     todoData: [
-      this.createTodoTask("Drink coffee"),
-      this.createTodoTask("Drink beer"),
-      this.createTodoTask("Go swimming"),
+      this.createTodoTask('Drink coffee'),
+      this.createTodoTask('Drink beer'),
+      this.createTodoTask('Go swimming'),
     ],
-    filter: "all",
+    filter: 'all',
   };
 
   createTodoTask(label) {
@@ -66,11 +67,7 @@ class App extends React.Component {
       const oldItem = todoData[idx];
       const newItem = { ...oldItem, completed: !oldItem.completed };
 
-      const newArray = [
-        ...todoData.slice(0, idx),
-        newItem,
-        ...todoData.slice(idx + 1),
-      ];
+      const newArray = [...todoData.slice(0, idx), newItem, ...todoData.slice(idx + 1)];
 
       return {
         todoData: newArray,
@@ -92,10 +89,10 @@ class App extends React.Component {
     const toDoCount = todoData.length - doneCount;
 
     let filteredToDoData = todoData;
-    if (this.state.filter === "active") {
+    if (this.state.filter === 'active') {
       filteredToDoData = todoData.filter((el) => !el.completed);
     }
-    if (this.state.filter === "completed") {
+    if (this.state.filter === 'completed') {
       filteredToDoData = todoData.filter((el) => el.completed);
     }
 
@@ -106,11 +103,7 @@ class App extends React.Component {
           <NewTaskForm onAdded={this.addItem} />
         </div>
         <div className="main">
-          <TaskList
-            todos={filteredToDoData}
-            onDeleted={this.deleteItem}
-            onToggleDone={this.onToggleDone}
-          />
+          <TaskList todos={filteredToDoData} onDeleted={this.deleteItem} onToggleDone={this.onToggleDone} />
           <Footer
             toDo={toDoCount}
             filter={this.state.filter}

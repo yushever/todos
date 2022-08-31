@@ -1,9 +1,9 @@
-import React from "react";
-import "./new-task-form.css";
+import React from 'react';
+import './new-task-form.css';
 
 class NewTaskForm extends React.Component {
   state = {
-    value: "",
+    value: '',
   };
 
   handleChange(event) {
@@ -20,14 +20,10 @@ class NewTaskForm extends React.Component {
         className="new-todo"
         placeholder="What needs to be done?"
         onKeyDown={(event) => {
-          if (
-            event.key === "Enter" &&
-            this.state.value.length > 0 &&
-            !this.state.value.startsWith(" ")
-          ) {
+          if (event.key === 'Enter' && this.state.value.length > 0 && !this.state.value.startsWith(' ')) {
             this.props.onAdded(this.state.value);
             this.setState(() => {
-              return { value: "" };
+              return { value: '' };
             });
           }
         }}

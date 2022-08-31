@@ -1,7 +1,8 @@
-import TasksFilter from "../tasks-filter";
-import "./footer.css";
-import React from "react";
-import PropTypes from "prop-types";
+import './footer.css';
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import TasksFilter from '../tasks-filter';
 
 class Footer extends React.Component {
   static defaultProps = {
@@ -25,10 +26,7 @@ class Footer extends React.Component {
         <div>
           <TasksFilter filter={filter} onSelected={onSelected} />
         </div>
-        <button
-          onClick={() => deleteCompletedItems()}
-          className="clear-completed"
-        >
+        <button onClick={() => deleteCompletedItems()} className="clear-completed">
           Clear completed
         </button>
       </div>

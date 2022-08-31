@@ -1,6 +1,6 @@
-import React from "react";
-import "./tasks-filter.css";
-import PropTypes from "prop-types";
+import React from 'react';
+import './tasks-filter.css';
+import PropTypes from 'prop-types';
 
 class TasksFilter extends React.Component {
   static defaultProps = {
@@ -17,26 +17,17 @@ class TasksFilter extends React.Component {
     return (
       <ul className="filters">
         <li>
-          <button
-            onClick={() => onSelected("all")}
-            className={filter === "all" ? "selected" : ""}
-          >
+          <button onClick={() => onSelected('all')} className={filter === 'all' ? 'selected' : ''}>
             All
           </button>
         </li>
         <li>
-          <button
-            onClick={() => onSelected("active")}
-            className={filter === "active" ? "selected" : ""}
-          >
+          <button onClick={() => onSelected('active')} className={filter === 'active' ? 'selected' : ''}>
             Active
           </button>
         </li>
         <li>
-          <button
-            onClick={() => onSelected("completed")}
-            className={filter === "completed" ? "selected" : ""}
-          >
+          <button onClick={() => onSelected('completed')} className={filter === 'completed' ? 'selected' : ''}>
             Completed
           </button>
         </li>
