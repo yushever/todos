@@ -1,16 +1,30 @@
-import Task from "../task";
-import "./task-list.css";
+import './task-list.css';
+import PropTypes from 'prop-types';
 
-const TaskList = ({ todos }) => {
+import Task from '../task';
+
+const TaskList = ({ todos, onDeleted, onToggleDone }) => {
   const elements = todos.map((item) => {
     const { id, ...itemProps } = item;
     return (
-      <li key={id} className="todo-list">
-        <Task {...itemProps} />
-      </li>
+      <div key={id} className="todo-list">
+        <Task {...itemProps} onDeleted={() => onDeleted(id)} onToggleDone={() => onToggleDone(id)} />
+      </div>
     );
   });
   return <ul className="todo-list">{elements}</ul>;
+};
+
+TaskList.defaultProps = {
+  todos: [],
+  onDeleted: () => {},
+  onToggleDone: () => {},
+};
+
+TaskList.propTypes = {
+  todos: PropTypes.arrayOf(PropTypes.object),
+  onDeleted: PropTypes.func,
+  onToggleDone: PropTypes.func,
 };
 
 export default TaskList;
