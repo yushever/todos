@@ -30,9 +30,14 @@ class Task extends React.Component {
         <div>
           <input className="toggle" type="checkbox" checked={completed} onChange={onToggleDone}></input>
           <label>
-            <span className="description" onClick={onToggleDone}>
+            <span className="title" onClick={onToggleDone}>
               {label}
             </span>
+            <div className="timer">
+                  <button className="icon-play"></button>
+                  <button className="icon-pause"></button>
+                  12:25
+                </div>
             <span className="created">created {createdTime(createTime)} ago</span>
           </label>
           <button className="icon icon-edit"></button>

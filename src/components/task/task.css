@@ -124,3 +124,29 @@
 .todo-list li.editing:last-child {
   margin-bottom: -1px;
 }
+.timer {
+  display: flex;
+	font-size: 13px;
+	color: gray;
+}
+.todo-list li .icon-pause,
+.todo-list li .icon-play {
+	font-size: 18px;
+	width: 18px;
+	height: 18px;
+}
+
+.todo-list li .icon-play {
+	font-size: 15px;
+}
+
+.icon-pause:after {
+	content: '⏸';
+}
+
+.icon-play:after {
+	content: '▶';
+}
+.icon-pause {
+  margin-right: 10px;
+}

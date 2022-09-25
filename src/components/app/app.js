@@ -12,7 +12,7 @@ class App extends React.Component {
 
   state = {
     todoData: [
-      this.createTodoTask('Drink coffee'),
+      this.createTodoTask('Drink '),
       this.createTodoTask('Drink beer'),
       this.createTodoTask('Go swimming'),
     ],
