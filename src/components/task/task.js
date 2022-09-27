@@ -18,19 +18,19 @@ class Task extends React.Component {
   };
 
   render() {
-    const { label, onDeleted, onToggleDone, completed, createTime} = this.props;
-    let {minutes, seconds} = this.props;
+    const { label, onDeleted, onToggleDone, completed, createTime } = this.props;
+    let { minutes, seconds } = this.props;
     let classNames = 'todo-list';
     if (completed) {
       classNames += ' completed';
     }
 
-    if (minutes < 10 ) {
-      minutes = "0" + String(minutes);
+    if (minutes < 10) {
+      minutes = '0' + String(minutes);
     }
 
-    if (seconds < 10 ) {
-      seconds = "0" + String(seconds);
+    if (seconds < 10) {
+      seconds = '0' + String(seconds);
     }
 
     return (
@@ -42,10 +42,12 @@ class Task extends React.Component {
               {label}
             </span>
             <div className="timer">
-                  <button className="icon-play"></button>
-                  <button className="icon-pause"></button>
-                  {minutes}:{seconds}
-                </div>
+              <button className="icon-play"></button>
+              <button className="icon-pause"></button>
+              <div className="timer-time">
+                {minutes}:{seconds}
+              </div>
+            </div>
             <span className="created">created {createdTime(createTime)} ago</span>
           </label>
           <button className="icon icon-edit"></button>

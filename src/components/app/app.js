@@ -12,22 +12,27 @@ class App extends React.Component {
 
   state = {
     todoData: [
-      this.createTodoTask('Drink '),
-      this.createTodoTask('Drink beer'),
-      this.createTodoTask('Go swimming'),
+      this.createTodoTask('Drink ', '', ''),
+      this.createTodoTask('Drink beer', '', ''),
+      this.createTodoTask('Go swimming', '', ''),
     ],
     filter: 'all',
   };
 
-  createTodoTask(label) {
+  createTodoTask(label, min, sec) {
+    if (min == '') {
+      min = 0;
+    }
+    if (sec == '') {
+      sec = 0;
+    }
     return {
       label,
       completed: false,
       id: this.maxId++,
       createTime: Date.now(),
-      minutes: 0,
-      seconds: 0,
-
+      minutes: min,
+      seconds: sec,
     };
   }
 
@@ -52,8 +57,8 @@ class App extends React.Component {
     });
   };
 
-  addItem = (text) => {
-    const newItem = this.createTodoTask(text);
+  addItem = (text, min, sec) => {
+    const newItem = this.createTodoTask(text, min, sec);
 
     this.setState(({ todoData }) => {
       const newArray = [...todoData, newItem];
