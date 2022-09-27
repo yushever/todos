@@ -12,12 +12,34 @@ class App extends React.Component {
 
   state = {
     todoData: [
-      this.createTodoTask('Drink ', '', ''),
-      this.createTodoTask('Drink beer', '', ''),
-      this.createTodoTask('Go swimming', '', ''),
+      // this.createTodoTask('Drink ', '', ''),
+      // this.createTodoTask('Drink beer', '', ''),
+      // this.createTodoTask('Go swimming', '', ''),
     ],
     filter: 'all',
   };
+  componentDidMount() {
+    console.log('mount');
+    const newTodos = this.getTodo();
+    this.setState(() => {
+      return {
+        todoData: newTodos,
+      };
+    });
+  }
+  componentDidUpdate() {
+    this.saveTodo();
+  }
+  saveTodo() {
+    localStorage.setItem('todoData', JSON.stringify(this.state.todoData));
+  }
+  getTodo() {
+    const getTodos = JSON.parse(localStorage.getItem('todoData'));
+
+    if (getTodos) {
+      return getTodos;
+    } else return [];
+  }
 
   createTodoTask(label, min, sec) {
     if (min == '') {

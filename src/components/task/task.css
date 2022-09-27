@@ -140,7 +140,9 @@
 .todo-list li .icon-play {
   font-size: 15px;
 }
-
+.icon-play {
+  cursor: pointer;
+}
 .icon-pause:after {
   content: '⏸';
 }
@@ -151,6 +153,7 @@
 }
 .icon-pause {
   margin-right: 10px;
+  cursor: pointer;
 }
 .timer-time {
   padding-top: 4px;
