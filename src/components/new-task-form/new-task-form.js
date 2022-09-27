@@ -4,6 +4,8 @@ import './new-task-form.css';
 class NewTaskForm extends React.Component {
   state = {
     value: '',
+    min: "",
+    sec: "",
   };
 
   handleChange(event) {
@@ -29,8 +31,8 @@ class NewTaskForm extends React.Component {
             }
           }}
         />
-        <input className="new-todo-form__timer" placeholder="Min"/>
-        <input className="new-todo-form__timer" placeholder="Sec"/>
+        <input value={this.state.min} className="new-todo-form__timer" placeholder="Min"/>
+        <input value={this.state.sec} className="new-todo-form__timer" placeholder="Sec"/>
         </form>
         
 

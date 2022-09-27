@@ -25,6 +25,9 @@ class App extends React.Component {
       completed: false,
       id: this.maxId++,
       createTime: Date.now(),
+      minutes: 0,
+      seconds: 0,
+
     };
   }
 
