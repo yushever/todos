@@ -44,7 +44,6 @@ class NewTaskForm extends React.Component {
   }
 
   render() {
-    console.log(this.state.min);
     return (
       <form className="new-todo-form">
         <input

@@ -7,6 +7,7 @@ class Task extends React.Component {
   static defaultProps = {
     onDeleted: () => {},
     onToggleDone: () => {},
+    startTimer: () => {},
   };
 
   static propTypes = {
@@ -18,7 +19,7 @@ class Task extends React.Component {
   };
 
   render() {
-    const { label, onDeleted, onToggleDone, completed, createTime } = this.props;
+    const { label, onDeleted, onToggleDone, completed, createTime, startTimer, clearTimer } = this.props;
     let { minutes, seconds } = this.props;
     let classNames = 'todo-list';
     if (completed) {
@@ -42,8 +43,8 @@ class Task extends React.Component {
               {label}
             </span>
             <div className="timer">
-              <button className="icon-play"></button>
-              <button className="icon-pause"></button>
+              <button className="icon-play" onClick={startTimer}></button>
+              <button className="icon-pause" onClick={clearTimer}></button>
               <div className="timer-time">
                 {minutes}:{seconds}
               </div>
