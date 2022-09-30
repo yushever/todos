@@ -111,14 +111,26 @@ class App extends React.Component {
   updateTimer = (id) => {
     this.setState(({ todoData }) => {
       const idx = todoData.findIndex((el) => el.id === id);
+      const oldItem = todoData[idx];
+      const min = Number(oldItem.seconds) === 59 ? Number(oldItem.minutes) + 1 : oldItem.minutes;
+      const sec = Number(oldItem.seconds) === 59 ? 0 : Number(oldItem.seconds) + 1;
+      const newItem = { ...oldItem, minutes: min, seconds: sec };
+      const newArray = [...todoData.slice(0, idx), newItem, ...todoData.slice(idx + 1)];
 
-      todoData[idx].minutes =
-        Number(todoData[idx].seconds) === 59 ? Number(todoData[idx].minutes) + 1 : todoData[idx].minutes;
-      todoData[idx].seconds = Number(todoData[idx].seconds) === 59 ? 0 : Number(todoData[idx].seconds) + 1;
       return {
-        todoData,
+        todoData: newArray,
       };
     });
+    // this.setState(({ todoData }) => {
+    //   const idx = todoData.findIndex((el) => el.id === id);
+
+    //   todoData[idx].minutes =
+    //     Number(todoData[idx].seconds) === 59 ? Number(todoData[idx].minutes) + 1 : todoData[idx].minutes;
+    //   todoData[idx].seconds = Number(todoData[idx].seconds) === 59 ? 0 : Number(todoData[idx].seconds) + 1;
+    //   return {
+    //     todoData,
+    //   };
+    // });
   };
 
   startTimer = (id) => {
