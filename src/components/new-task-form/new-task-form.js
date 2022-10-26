@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './new-task-form.css';
 
-function NewTaskForm(props) {
+const NewTaskForm = (props) => {
   const [value, setValue] = useState('');
   const [min, setMin] = useState('');
   const [sec, setSec] = useState('');
@@ -62,6 +62,6 @@ function NewTaskForm(props) {
       />
     </form>
   );
-}
+};
 
 export default NewTaskForm;
