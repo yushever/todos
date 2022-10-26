@@ -1,76 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './new-task-form.css';
 
-class NewTaskForm extends React.Component {
-  state = {
-    value: '',
-    min: '',
-    sec: '',
+function NewTaskForm(props) {
+  const [value, setValue] = useState('');
+  const [min, setMin] = useState('');
+  const [sec, setSec] = useState('');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
   };
 
-  handleChange(event) {
-    this.setState(() => {
-      return { value: event.target.value };
-    });
-  }
-
-  handleChangeMin(event) {
+  const handleChangeMin = (event) => {
     if (event.target.value.length > 2) {
       alert('Слишком много минут!');
       return;
     }
-    this.setState(() => {
-      return { min: event.target.value };
-    });
-  }
+    setMin(event.target.value);
+  };
 
-  handleChangeSec(event) {
+  const handleChangeSec = (event) => {
     if (event.target.value.length > 2) {
       alert('Слишком мало секунд!');
       return;
     }
-    this.setState(() => {
-      return { sec: event.target.value };
-    });
-  }
+    setSec(event.target.value);
+  };
 
-  onEnter(event) {
-    if (event.key === 'Enter' && this.state.value.length > 0 && !this.state.value.startsWith(' ')) {
-      this.props.onAdded(this.state.value, this.state.min, this.state.sec);
-      this.setState(() => {
-        return { value: '', min: '', sec: '' };
-      });
+  const onEnter = (event) => {
+    if (event.key === 'Enter' && value.length > 0 && !value.startsWith(' ')) {
+      props.onAdded(value, min, sec);
+      setValue('');
+      setMin('');
+      setSec('');
     }
-  }
+  };
 
-  render() {
-    return (
-      <form className="new-todo-form">
-        <input
-          value={this.state.value}
-          onChange={(e) => this.handleChange(e)}
-          className="new-todo"
-          placeholder="What needs to be done?"
-          onKeyDown={(e) => this.onEnter(e)}
-        />
-        <input
-          type="number"
-          value={this.state.min}
-          onChange={(e) => this.handleChangeMin(e)}
-          className="new-todo-form__timer"
-          placeholder="Min"
-          onKeyDown={(e) => this.onEnter(e)}
-        />
-        <input
-          type="number"
-          value={this.state.sec}
-          onChange={(e) => this.handleChangeSec(e)}
-          className="new-todo-form__timer"
-          placeholder="Sec"
-          onKeyDown={(e) => this.onEnter(e)}
-        />
-      </form>
-    );
-  }
+  return (
+    <form className="new-todo-form">
+      <input
+        value={value}
+        onChange={(e) => handleChange(e)}
+        className="new-todo"
+        placeholder="What needs to be done?"
+        onKeyDown={(e) => onEnter(e)}
+      />
+      <input
+        type="number"
+        value={min}
+        onChange={(e) => handleChangeMin(e)}
+        className="new-todo-form__timer"
+        placeholder="Min"
+        onKeyDown={(e) => onEnter(e)}
+      />
+      <input
+        type="number"
+        value={sec}
+        onChange={(e) => handleChangeSec(e)}
+        className="new-todo-form__timer"
+        placeholder="Sec"
+        onKeyDown={(e) => onEnter(e)}
+      />
+    </form>
+  );
 }
+
 export default NewTaskForm;
