@@ -38,7 +38,7 @@ class Task extends React.Component {
       <li className={classNames}>
         <div>
           <input className="toggle" type="checkbox" checked={completed} onChange={onToggleDone}></input>
-          <label>
+          <div className="label">
             <span className="title" onClick={onToggleDone}>
               {label}
             </span>
@@ -50,7 +50,7 @@ class Task extends React.Component {
               </div>
             </div>
             <span className="created">created {createdTime(createTime)} ago</span>
-          </label>
+          </div>
           <button className="icon icon-edit"></button>
           <button className="icon icon-destroy" onClick={onDeleted}></button>
         </div>
