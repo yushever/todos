@@ -3,12 +3,18 @@ import PropTypes from 'prop-types';
 
 import Task from '../task';
 
-const TaskList = ({ todos, onDeleted, onToggleDone }) => {
+const TaskList = ({ todos, onDeleted, onToggleDone, startTimer, clearTimer }) => {
   const elements = todos.map((item) => {
     const { id, ...itemProps } = item;
     return (
       <div key={id} className="todo-list">
-        <Task {...itemProps} onDeleted={() => onDeleted(id)} onToggleDone={() => onToggleDone(id)} />
+        <Task
+          {...itemProps}
+          onDeleted={() => onDeleted(id)}
+          onToggleDone={() => onToggleDone(id)}
+          startTimer={() => startTimer(id)}
+          clearTimer={() => clearTimer(id)}
+        />
       </div>
     );
   });

@@ -7,6 +7,7 @@ class Task extends React.Component {
   static defaultProps = {
     onDeleted: () => {},
     onToggleDone: () => {},
+    startTimer: () => {},
   };
 
   static propTypes = {
@@ -18,23 +19,38 @@ class Task extends React.Component {
   };
 
   render() {
-    const { label, onDeleted, onToggleDone, completed, createTime } = this.props;
-
+    const { label, onDeleted, onToggleDone, completed, createTime, startTimer, clearTimer } = this.props;
+    let { minutes, seconds } = this.props;
     let classNames = 'todo-list';
     if (completed) {
       classNames += ' completed';
+    }
+
+    if (minutes < 10) {
+      minutes = '0' + String(minutes);
+    }
+
+    if (seconds < 10) {
+      seconds = '0' + String(seconds);
     }
 
     return (
       <li className={classNames}>
         <div>
           <input className="toggle" type="checkbox" checked={completed} onChange={onToggleDone}></input>
-          <label>
-            <span className="description" onClick={onToggleDone}>
+          <div className="label">
+            <span className="title" onClick={onToggleDone}>
               {label}
             </span>
+            <div className="timer">
+              <button className="icon-play" onClick={startTimer}></button>
+              <button className="icon-pause" onClick={clearTimer}></button>
+              <div className="timer-time">
+                {minutes}:{seconds}
+              </div>
+            </div>
             <span className="created">created {createdTime(createTime)} ago</span>
-          </label>
+          </div>
           <button className="icon icon-edit"></button>
           <button className="icon icon-destroy" onClick={onDeleted}></button>
         </div>
